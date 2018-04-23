@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <form class="navbar-form navbar-left">
+            <a class="navbar-brand" href="https://hafta1.dev/blog/index">Hafta1 Blog</a>
+
+        </form>
+
+
+        {% if user_logged_in %}
+
+        <form class="navbar-form navbar-right">
+            <p class="navbar-text">Hoşgeldiniz, {{ user_name }}</p>
+            <a class="navbar-text" href="logout.php">logout</a>
+            {% else %}
+        <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" action="{{ generateUrl("login") }}" method="POST">
+                <div class="form-group">
+                    <input type="text" name="loginName" class="form-control" placeholder="Kullanici Adi">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Parola">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+
+

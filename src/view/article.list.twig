@@ -1,0 +1,36 @@
+<hr>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hoşgeldiniz</h1>
+        <p>Deneme amaçlı oluşturulmuş bir blogdur</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+
+        {% for blog in blogs|slice(0, 3) %}
+
+            <div class="col-md-3">
+                <h2>{{ blog.description }}</h2>
+                <p>{{ blog.article|slice(0, 400) }}</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+            </div>
+        {% endfor %}
+
+        <div class="col-md-3">
+            <h2><u>Kategoriler</u></h2>
+            {% for category in categories %}
+            <li><a href="">{{ category.name }}</a> </li>
+            {% endfor %}
+                <h3><u>Son Eklenen Post</u></h3>
+           <!--last id ile post başlığını buraya çekeceğim -->
+    </div>
+
+</div>
+</div> <!-- /container -->
+
+

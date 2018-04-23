@@ -1,0 +1,39 @@
+<hr>
+<hr>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <form >
+                Ad Soyad:<br>
+                <input type="text" name="nameSurname">
+                <br><br>
+                Kullanici Adi:<br>
+                <input type="text" name="memberName">
+                <br><br>
+                Parola:<br>
+                <input type="password" name="password">
+                <br><br>
+                E-Posta:<br>
+                <input type="text" name="eMail">
+                <br><br>
+                <img src='captcha.php'/>
+                <br><br>
+                Doğrulama Kodu:<br>
+                <input type="text" name="captcha">
+                <br><br>
+                <input type="submit" value="Ekle">
+            </form>
+        </div>
+        <div class="col-md-3">
+            <h3><u>Kategoriler</u></h3>
+            {% for category in categories %}
+                <li><a href="">{{ category.name }}</a></li>
+            {% endfor %}
+            <h3><u>Son Yazılar</u></h3>
+            <!--last id ile post başlığını buraya çekeceğim -->
+
+        </div>
+
+    </div>
+</div>

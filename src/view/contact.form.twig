@@ -1,0 +1,26 @@
+<hr>
+<hr>
+<hr>
+<form action="{{ generateUrl("contact") }}" method="POST">
+    Ad / Soyad:<br>
+    <input type="text" name="nameSurname">
+    <br><br>
+    E-Posta:<br>
+    <input type="text" name="eMail">
+    <br><br>
+    Başlık:<br>
+    <input type="text" name="title">
+    <br><br>
+    Mesaj:<br>
+    <textarea name="message" rows="10" cols="33">
+İletmek istediğiniz mesaj</textarea>
+    <br><br>
+    <img src='captcha.php'/>
+    <br><br>
+    Doğrulama Kodu:<br>
+    <input type="text" name="captcha">
+    <br><br>
+
+
+    <input type="submit" value="Ekle">
+</form>
