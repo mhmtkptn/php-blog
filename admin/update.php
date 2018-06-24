@@ -9,13 +9,10 @@
 require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 
 //Kullanıcı login kontrolü yapıyoruz
-if ($_SESSION["userLogin"]["loggedIn"] === true) {
-
-} else {
+if ($_SESSION['userLogin']["loggedIn"] !== true) {
     header("Location: /blog/login.php");
     exit();
 };
-
 
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
@@ -24,7 +21,6 @@ echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
 if (isset($_SESSION["idErr"]) && !empty($_SESSION["idErr"])) {
     echo("Hata: " . $_SESSION["idErr"] . "<br><br>");
 }
-
 
 //Article listele
 $articleController = new \src\controller\ArticleController();
@@ -41,7 +37,6 @@ $userRows = $userController->select();
 //Member Listele
 $memberController = new src\controller\MemberController();
 $memberRows = $memberController->select();
-
 
 ?>
 <html>

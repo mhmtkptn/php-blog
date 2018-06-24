@@ -36,7 +36,6 @@ class ContactController extends Controller
             "blogs" => $contactDatas,
         ];
         return $returnData;
-
     }
 
 
@@ -53,8 +52,5 @@ class ContactController extends Controller
             ->setMessage($postData["message"]);
         $contactAdapter->insert($contact);
         $contactAdapter->execute();
-
     }
-
-
 }

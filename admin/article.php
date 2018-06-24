@@ -10,16 +10,13 @@ require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 define('targetDir', 'uploads/');
 
 //kullanıcı login kontrolü yapıyoruz
-if ($_SESSION["userLogin"]["loggedIn"] === true) {
-} else {
+if ($_SESSION["userLogin"]["loggedIn"] !== true) {
     header("Location: /blog/login.php");
-    exit;
+    exit();
 };
-
 
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
-
 
 //Kategori listelemek için
 $categoryController = new \src\controller\CategoryController();
@@ -42,7 +39,6 @@ if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name']
             $articleController = new \src\controller\ArticleController();
             $articleController->insert($_POST);
         } else {
-
             echo "Tekrar deneyiniz";
         }
     }
@@ -55,7 +51,6 @@ if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name']
         $articleController->insert($_POST);
         $lastId = $articleController->getLastId();
     }
-
 }
 
 ?>
@@ -77,20 +72,14 @@ if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name']
 
 <form action="" method="POST" enctype="multipart/form-data">
     Yazinin ait oldugu kategori:<br>
-
-
     <?php
     //category'deki id ve name'i mysqli_fetch_assoc ile kolon sırasına göre getirdik
     foreach ($categoryRows["categories"] as $categoryRow) {
         if ($articleRow["categoryId"] == $categoryRow["id"]) {
-
             $options .= "<option selected value='" . $categoryRow['id'] . "'>" . $categoryRow['name'] . "</option>";
-
         } else {
             $options .= "<option value='" . $categoryRow['id'] . "'>" . $categoryRow['name'] . "</option>";
-
         }
-
     }
     ?>
     <select name="categoryId">

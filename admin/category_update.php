@@ -7,18 +7,14 @@
  */
 require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 
-
 //kullanıcı login kontrolü yapıyoruz
 if ($_SESSION["userLogin"]["loggedIn"] === true) {
-} else {
     header("Location: /blog/login.php");
     exit();
 };
 
-
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
-
 
 //Update sayfasına id ile mi girdi ?
 if (isset($_GET["id"])) {
@@ -29,7 +25,6 @@ if (isset($_GET["id"])) {
     exit();
 }
 
-
 //Select için
 if (isset($_GET["id"])) {
     $category = new \src\entity\Category();
@@ -39,9 +34,7 @@ if (isset($_GET["id"])) {
     $categoryRows = $categoryController->select();
     foreach ($categoryRows as $categoryRow) {
     }
-
 }
-
 
 // delete için
 if (isset($_POST["sil"])) {
@@ -72,11 +65,8 @@ if (isset($_GET["id"])) {
     if ($categoryAdapter->getResult() == false) {
         printf("Error: %s\n", $categoryAdapter->getConn()->error);
     }
-
 }
-
 ?>
-
 
 <html>
 <head>

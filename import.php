@@ -9,7 +9,6 @@
 require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 define('targetDir', 'uploads/');
 
-
 //fileId varmı ? ve value'su boşmu ? kontrolü yaptık
 if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name'])) {
     $tmpName = $_FILES["fileId"]["name"];
@@ -27,7 +26,6 @@ if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name']
 
             echo "Tekrar deneyiniz";
         }
-
 
 //Seçime göre yüklenen xml dosyasındaki data tabloya insert edilecek
         $tableName = $_POST["table"];
@@ -79,15 +77,10 @@ if (isset($_FILES['fileId']['tmp_name']) && !empty($_FILES['fileId']['tmp_name']
                 $categoryController->insert($_POST);
 
                 break;
-
         }
-
-
     }
-
 }
 ?>
-
 
 <html>
 <head>

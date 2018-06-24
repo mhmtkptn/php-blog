@@ -15,7 +15,6 @@ class CategoryController extends Controller
 {
     public function insert($postCategory)
     {
-
         $categoryController = new \src\controller\CategoryController();
         $result = $categoryController->selectOne($postCategory["name"]);
         if ($result["blog"] == NULL) {
@@ -24,18 +23,14 @@ class CategoryController extends Controller
             $category->setName(strtolower($postCategory["name"]));
             $categoryAdapter->insert($category);
             $categoryAdapter->execute();
-
         } else {
             echo "Bu kategori adı daha önce eklenmiştir...";
-
         }
-
-
     }
 
     public function update()
     {
-
+        // TODO: Implement update() method.
     }
 
     public function delete()
@@ -69,7 +64,5 @@ class CategoryController extends Controller
         ];
         return $returnData;
     }
-
-
 }
 

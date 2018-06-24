@@ -20,7 +20,6 @@ class UserController extends Controller
 
     public function insert($postUser)
     {
-
         $userController = new \src\controller\UserController();
         $result = $userController->selectOne(strtolower($postUser["userName"]));
 
@@ -33,13 +32,10 @@ class UserController extends Controller
                 ->setPassword($postUser["password_md5"]);
             $userAdapter->insert($user);
             $userAdapter->execute();
-
         } else {
             echo "Bu kullanıcı adı daha önce eklenmiştir...";
 
         }
-
-
     }
 
     public function update()
@@ -65,7 +61,6 @@ class UserController extends Controller
             "users" => $userDatas,
         ];
         return $returnData;
-
     }
 
 
@@ -101,9 +96,7 @@ class UserController extends Controller
         $userAdapter = new UserAdapter();
         $userAdapter->logOut();
         return $this->redirectUrl("/blog/index");
-
     }
-
 }
 
 

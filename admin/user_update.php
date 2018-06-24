@@ -8,16 +8,13 @@
 require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 
 //Kullanıcı login kontrolü yapıyoruz
-if ($_SESSION["userLogin"]["loggedIn"] === true) {
-} else {
+if ($_SESSION['userLogin']["loggedIn"] !== true) {
     header("Location: /blog/login.php");
     exit();
 };
 
-
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
-
 
 //Select için
 if (isset($_GET["id"])) {
@@ -27,7 +24,6 @@ if (isset($_GET["id"])) {
     $userController->select();
     $userRows = $userController->select();
     foreach ($userRows as $userRow) {
-
     }
 }
 
@@ -47,8 +43,6 @@ if (isset($_POST["sil"])) {
         header("Location: /blog/admin/index.php");
         exit;
     }
-
-
 }
 
 
@@ -70,14 +64,10 @@ if (isset($_GET["id"])) {
         $userAdapter->update($user, ["nameSurname" => $nameSurname, "userName" => $userName, "eMail" => $eMail]);
         $userAdapter->execute();
     }
-
-
     if ($userAdapter->getResult() == false) {
         printf("Error: %s\n", $userAdapter->getConn()->error);
     }
-
 }
-
 ?>
 
 <html>

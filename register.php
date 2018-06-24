@@ -8,22 +8,17 @@
 require_once __DIR__ . "/vendor/autoload.php";
 $captchaCode = $_SESSION["captchaCode"];
 
-
 //captcha doğrulaması yapıyoruz
 if ($_POST) {
     $captchaCodeCheck = $_POST['captcha'];
     if ($captchaCode == $captchaCodeCheck) {
-
         $memberController = new src\controller\MemberController();
         $memberController->insert($_POST);
         echo "Uye kaydi basariyla olusturuldu";
     } else {
         echo "Dogrulama kodu hatasi";
     }
-
 }
-
-
 ?>
 
 <html>

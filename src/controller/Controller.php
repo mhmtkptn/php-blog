@@ -26,6 +26,4 @@ abstract class Controller implements ControllerInterface
     {
         header("Location: ".$url);
     }
-
-
 }

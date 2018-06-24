@@ -15,10 +15,8 @@ if ($_SESSION["memberLogin"]["loggedIn"] === true) {
     exit();
 };
 
-
 echo "Giris yapan kullanici: " . $_SESSION["memberLogin"]["memberName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["memberLogin"]["ipAdd"];
-
 
 //Select için
 if (isset($_GET["id"])) {
@@ -28,10 +26,8 @@ if (isset($_GET["id"])) {
     $memberController->select();
     $memberRows = $memberController->select();
     foreach ($memberRows as $memberRow) {
-
     }
 }
-
 
 // Delete için
 if (isset($_POST["sil"])) {
@@ -48,9 +44,7 @@ if (isset($_POST["sil"])) {
         header("Location: /blog/admin/index.php");
         exit;
     }
-
 }
-
 
 //Update için
 if (isset($_GET["id"])) {
@@ -69,15 +63,10 @@ if (isset($_GET["id"])) {
         $memberAdapter->update($member, ["nameSurname" => $nameSurname, "eMail" => $eMail]);
         $memberAdapter->execute();
     }
-
-
     if ($memberAdapter->getResult() == false) {
         printf("Error: %s\n", $memberAdapter->getConn()->error);
     }
-
-
 }
-
 ?>
 
 <html>

@@ -57,7 +57,6 @@ class ArticleController extends Controller
 
         ];
         return $returnData;
-
     }
 
     public function selectOne($id)
@@ -88,11 +87,7 @@ class ArticleController extends Controller
             ->setFileId($postData["fileId"]);
         $articleAdapter->insert($article);
         $articleAdapter->execute();
-
-
     }
-
-
 }
 
 

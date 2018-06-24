@@ -9,17 +9,12 @@ require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 
 //kullanıcı login kontrolü yapıyoruz
 if ($_SESSION["userLogin"]["loggedIn"] === true) {
-
-
-} else {
     header("Location: /blog/login.php");
     exit();
 };
 
-
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
-
 
 if ($_POST) {
     $categoryController = new \src\controller\CategoryController();

@@ -9,15 +9,13 @@
 //config dosyası kontrolü
 $file = "/var/www/sf_projeler/hafta1/blog/config.php";
 if (file_exists($file)) {
-
     $unlink_result = unlink($file);
     echo("Dosya basariyla silindi");
 } else {
 
 };
 
-if ($_SESSION['userLogin']["loggedIn"] === true) {
-} else {
+if ($_SESSION['userLogin']["loggedIn"] !== true) {
     header("Location: /blog/login.php");
     exit();
 };

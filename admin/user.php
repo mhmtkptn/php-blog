@@ -8,14 +8,11 @@
 require_once('/var/www/sf_projeler/hafta1/blog/vendor/autoload.php');
 require_once('/var/www/sf_projeler/hafta1/blog/Validation.php');
 
-
 //kullanıcı login kontrolü yapıyoruz
-if ($_SESSION["userLogin"]["loggedIn"] === true) {
-} else {
+if ($_SESSION['userLogin']["loggedIn"] !== true) {
     header("Location: /blog/login.php");
     exit();
 };
-
 
 echo "Giris yapan kullanici: " . $_SESSION["userLogin"]["userName"];
 echo "<br>" . "Ip adresiniz: " . $_SESSION["userLogin"]["ipAdd"];
@@ -28,9 +25,7 @@ $nameSurname = $_POST["nameSurname"];
 $userName = $_POST["userName"];
 //parolayı md5 algoritmasına soktuk
 $_POST["password_md5"] = md5($_POST["password_md5"]);
-
 $eMail = $_POST["eMail"];
-
 
 if ($_POST) {
     try {
@@ -63,7 +58,6 @@ if ($_POST) {
             echo("$passwordErr");
         } else {
             $password = Validation::testInput($_POST["password_md5"]);
-
         }
 
 
@@ -89,8 +83,6 @@ if ($_POST) {
         var_dump($exception);
         exit;
     }
-
-
 }
 ?>
 

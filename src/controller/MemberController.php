@@ -22,7 +22,6 @@ class MemberController extends Controller
 
     public function insert($postMember)
     {
-
         $member = new \src\entity\Member();
         $memberAdapter = new \src\adapter\MemberAdapter();
         $member->setNameSurname($postMember["nameSurname"])
@@ -31,7 +30,6 @@ class MemberController extends Controller
             ->setPassword($postMember["password"]);
         $memberAdapter->insert($member);
         $memberAdapter->execute();
-
     }
 
     public function update()
@@ -55,7 +53,6 @@ class MemberController extends Controller
             $members = $this->loadMembers();
             $xmlExport = new XMLWriter();
             $xmlExport->openMemory();
-
 //veritabanındaki veriyi xml olarak export edeceğimiz dosyayı belirledik
             $xmlExport->openURI("member_export.xml");
 
@@ -87,25 +84,17 @@ class MemberController extends Controller
         $password = md5($_POST['password']);
 
         if (isset($_POST['loginName']) && isset($_POST['password'])) {
-
             $memberAdapter = new \src\adapter\MemberAdapter();
             $memberAdapter->select("Member", ["where" => ["and" => ["memberName" => $loginName, "password" => $password]]]);
             $memberAdapter->execute();
-
             if ($memberAdapter->getResult()->num_rows !== 0) {
                 $_SESSION["memberLogin"] = array('memberName' => $_POST["loginName"], 'ipAdd' => $_SERVER['SERVER_ADDR'], 'loggedIn' => true);
-
-
                 var_dump($_SESSION["memberLogin"]);
                 header("Location=blog/index");
-
             } else {
                 echo("Kullanıcı adınız veya şifreniz hatalı");
             }
-
         }
-
-
         //
         $this->redirectUrl("/blog/index");
         return array("deneme", "deneme2");
@@ -129,13 +118,10 @@ class MemberController extends Controller
 
     public function logOut()
     {
-
         $memberAdapter = new MemberAdapter();
         $memberAdapter->logOut();
         return $this->redirectUrl("/blog/index");
-
     }
-
 }
 
 

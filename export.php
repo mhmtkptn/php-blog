@@ -137,10 +137,7 @@ switch ($tableName) {
         $xmlExport->flush();
 
         break;
-
 }
-
-
 ?>
 
 <html>
